@@ -48,13 +48,24 @@
                    imgPhoto.src = URL.createObjectURL(datas)
             })
 
-        fetch("@Url.Content("~/Api/City")")
+        @*fetch("@Url.Content("~/Api/City")")
             .then(response => response.json())
             .then(datas => {
                 datas.forEach(city => {
                     const opt = new Option(city, city)
                     selCity.Option.add(opt)
                 })
-            })
+            })*@
+
+                async function LoadCities() {
+                let response = await fetch("@Url.Content("~/Api/City")")
+                let datas = await response.json()
+                datas.forEach(city => {
+                    const opt = new Option(city, city)
+                    selCity.options.add(opt)
+                })
+            }
+
+            LoadCities()
     </script>
 }

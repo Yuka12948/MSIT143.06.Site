@@ -116,6 +116,5 @@ namespace Msit14306Site.Controllers
             var roads = _context.Addresses.Where(a => a.SiteId == site).Select(a => a.Road).Distinct();
             return Json(roads);
         }
-
     }
 }

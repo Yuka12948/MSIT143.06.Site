@@ -8,9 +8,15 @@ namespace Msit14306Site.Controllers
 {
     public class HomeworkController : Controller
     {
-        public IActionResult Homework()
+        public IActionResult Homework1()
         {
             return View();
+        }
+
+        public IActionResult Homework2()
+        {
+            return View();
+
         }
     }
 }
