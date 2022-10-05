@@ -23,6 +23,31 @@ namespace Msit14306Site.Controllers
             return View();
         }
 
+        public IActionResult First()
+        {
+            return View();
+        }
+
+        public IActionResult GetDemo()
+        {
+            return View();
+        }
+
+        public IActionResult AjaxEvent()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        public IActionResult Homework()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -34,9 +59,6 @@ namespace Msit14306Site.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
+
     }
 }

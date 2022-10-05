@@ -56,7 +56,7 @@ namespace Msit14306Site
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Api}/{action=Homework}/{id?}");
+                    pattern: "{controller=Home}/{action=Register}/{id?}");
             });
         }
     }
