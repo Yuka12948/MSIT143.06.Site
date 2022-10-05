@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Noto+Serif+TC&family=Square+Peg&display=swap" rel="stylesheet">
     @await RenderSectionAsync("Styles", required: false)
 </head>
-<body>
+<body style="font-family:'Noto Serif TC', serif;" >
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -21,24 +21,31 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Index</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="First">First Ajax<br />Ajax hello!</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="First">First</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="GetDemo">GetDemo<br />GetNameHello</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="GetDemo">GetDemo</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AjaxEvent">AjaxEvent<br />Start loading stop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AjaxEvent">AjaxEvent</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">Register<br />上傳資料庫</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">Register</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Address">Address<br />select</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Homework" asp-action="Homework">桃園觀光景點</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Promise">Promise<br />非同步結構</a>
                         </li>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Create">Members</a>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Fetch">Fetch<br />非同步結構</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Homework" asp-action="Homework">Homework<br />桃園觀光景點</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Index">Members<br />會員列表</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

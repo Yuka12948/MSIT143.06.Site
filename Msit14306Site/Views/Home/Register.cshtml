@@ -40,13 +40,19 @@
         const divMessage = document.querySelector("#div1")
         const txtName = document.querySelector("#InputName")
         const alert = document.querySelector("#nameHelp")
-        const xhr = new XMLHttpRequest()
+        
 
         btn.addEventListener("click", event => {
             event.preventDefault() //將submit預設行為停止 (按下submit按鈕不會送出)
 
             const formData = new FormData(document.userInfo); //將userInfo表單中的資料放到formData變數中
-            
+
+            //Fetch方法將資料送到Server端
+
+
+
+            //XMLHttpRequest將資料送到Server端
+            const xhr = new XMLHttpRequest()
             xhr.addEventListener("load", () => {
                 const data = xhr.responseText
                 divMessage.textContent = data
@@ -56,15 +62,5 @@
             xhr.send(formData)
         })
 
-        @*txtName.addEventListener("blur", ()=>{
-            xhr.addEventListener("load", ()=>{
-                const data = xhr.responseText
-                alert.textContent = data
-            })
-            const url = "@Url.Content("~/Api/checkedData")"
-            const params = `?Name=${txtName.value}`
-            xhr.open("GET", url + params);
-            xhr.send();
-        })*@
     </script>
 }
