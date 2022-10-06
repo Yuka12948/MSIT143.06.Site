@@ -77,23 +77,12 @@ namespace Msit14306Site.Controllers
             //todo 將收到會員資料寫進資料庫中
             _context.Members.Add(member);
             _context.SaveChanges(); //資料庫Demo id PK
-
             return Content(filePath, "text/plain");
-
-
-
-            //return Content(member.Name, "text/plain");
         }
 
         public IActionResult checkAccount(string Name)
         {
             bool exists = _context.Members.Any(m => m.Name == Name);
-            //if (string.IsNullOrEmpty(Name))
-            //    return Content("姓名欄位不可為空值", "text/plain");
-            //else if (exists)
-            //    return Content("此帳號已存在", "text/plain");
-            //else
-            //    return Content("", "text/plain");
             return Content(exists.ToString(), "text/plain");
         }
 

@@ -45,7 +45,7 @@
         fetch("@Url.Content("~/Members/showphoto/3")") //api呼叫
             .then(response => response.blob()) //promise物件 裡面有圖的資訊 //資料的顯示跟讀取
             .then(datas => {
-                   imgPhoto.src = URL.createObjectURL(datas)
+                imgPhoto.src = URL.createObjectURL(datas)
             })
 
         @*fetch("@Url.Content("~/Api/City")")
@@ -57,15 +57,14 @@
                 })
             })*@
 
-                async function LoadCities() {
-                let response = await fetch("@Url.Content("~/Api/City")")
-                let datas = await response.json()
-                datas.forEach(city => {
-                    const opt = new Option(city, city)
-                    selCity.options.add(opt)
-                })
-            }
-
-            LoadCities()
+        async function LoadCities() {
+            let response = await fetch("@Url.Content("~/Api/City")")
+            let datas = await response.json()
+            datas.forEach(city => {
+                const opt = new Option(city, city)
+                selCity.options.add(opt)
+            })
+        }
+        LoadCities()
     </script>
 }

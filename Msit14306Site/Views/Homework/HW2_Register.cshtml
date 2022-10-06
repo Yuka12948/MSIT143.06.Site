@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section Styles{ 
+<style>
+
+    .h2tittle {
+        margin-bottom: 20pt;
+        font-weight: bold;
+        text-align: center;
+    }
+
+</style>
+<link href="~/css/bootstrap.css" rel="stylesheet" />
+}
+
+<h2 class="h2tittle">HW02_身分驗證</h2>
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        @* name=abc *@
+        <form name="userInfo" method="post" enctype="multipart/form-data" action="~/Api/Register">   @*傳出的資料有 input type="file" => enctype="multipart/form-data"*@
+
+            <div class="form-group">
+                <label for="InputName">姓名</label>
+                <input type="text" class="form-control" id="InputName" name="Name" required > @*name屬性要跟class屬性以及資料庫欄位一樣*@
+                <small id="NameHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="InputEmail">電子郵件</label>
+                <input type="email" class="form-control" id="InputEmail" name="Email" required >
+                <small id="EmailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="InputAge">年齡</label>
+                <input type="number" class="form-control" id="InputAge" name="Age" required >
+                <small id="AgeHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+                <label for="InputFile">選擇檔案</label>
+                <input type="file" class="form-control-file" id="InputFile" name="File" >
+            </div>
+            <button type="submit" id="btnSubmit" class="btn btn-primary">送出</button>
+
+        </form>
+        <br /><div class="alert alert-primary" role="alert" id="div1"></div>
+
+    </div>
+    <div class="col-3"></div>
+</div>
+
+@section Scripts{
+    <script>
+        const btn = document.querySelector("#btnSubmit")
+        const divMessage = document.querySelector("#div1")
+        const txtName = document.querySelector("#InputName")
+        const txtEmail = document.querySelector("#InputEmail")
+        const txtAge = document.querySelector("#InputAge")
+        const NameHelp = document.querySelector("#NameHelp")
+        const EmailHelp = document.querySelector("#EmailHelp")
+        const AgeHelp = document.querySelector("#AgeHelp")
+
+        //blur
+        txtName.addEventListener("blur", async () => {
+            //fetch asyc await
+            let response = await fetch("@Url.Content("~/Api/checkAccount")" + `?name=${txtName.value}`) // /Api/checkAccount?Name=Yuka >> true or false
+            let data = await response.text()
+            console.log(data)
+            if (txtName.value == '')
+                NameHelp.textContent = "此欄位不可為空值"
+            else if (data == 'True')
+                NameHelp.textContent = "此帳號已存在"
+            else
+                NameHelp.textContent =""
+        })
+
+        txtEmail.addEventListener("blur", async () => {
+            let response = await fetch("@Url.Content("~/Api/checkEmail")" + `?email=${txtEmail.value}`)
+            let data = await response.text()
+            console.log(txtEmail.value)
+            if (txtEmail.value == '')
+                EmailHelp.textContent = "此欄位不可為空值"
+            else
+                EmailHelp.textContent = ""
+        })
+
+        txtAge.addEventListener("blur", async () => {
+            let response = await fetch("@Url.Content("~/Api/checkAge")" + `?email=${txtAge.value}`)
+            let data = await response.text()
+            console.log(txtAge.value)
+            if (txtAge.value == '')
+                AgeHelp.textContent = "此欄位不可為空值"
+            else
+                AgeHelp.textContent = ""
+        })
+
+
+        btn.addEventListener("click", event => {
+            event.preventDefault() //將submit預設行為停止 (按下submit按鈕不會送出)
+
+            const formData = new FormData(document.userInfo); //將userInfo表單中的資料放到formData變數中
+
+            //Fetch方法將資料送到Server端
+            fetch(document.userInfo.action, {
+                method: "POST",
+                body: formData
+            }).then(response => response.text())
+            .then(data => divMessage.textContent = data)
+
+            //XMLHttpRequest將資料送到Server端
+            //const xhr = new XMLHttpRequest()
+            //xhr.addEventListener("load", () => {
+            //    const data = xhr.responseText
+            //    divMessage.textContent = data
+            //})
+
+            //xhr.open("POST", document.userInfo.action) //"/Api/Register"
+            //xhr.send(formData)
+        })
+
+    </script>
+}

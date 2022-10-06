@@ -1,21 +1,31 @@
 ﻿
 @{
-    ViewData["Title"] = "Homework2";
+    ViewData["Title"] = "HW3_Address";
 }
 
-<h1>Homework2</h1>
-<select id="select1"></select>
-<select id="select2"></select>
-<select id="select3"></select>
-@section Styles{ 
-<style>
+@section Styles{
+    <style>
 
-</style>
+        .h2tittle {
+            margin-bottom: 20pt;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .clsSel {
+            text-align: center;
+        }
+
+    </style>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
 }
 
-
-
-
+<h2 class="h2tittle">HW03_地址下拉式選單</h2>
+    <p class="clsSel">
+        <select id="select1"></select>
+        <select id="select2"></select>
+        <select id="select3"></select>
+    </p>
 
 @section Scripts{
     <script>

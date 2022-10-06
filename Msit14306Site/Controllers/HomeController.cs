@@ -38,16 +38,6 @@ namespace Msit14306Site.Controllers
             return View();
         }
 
-        public IActionResult Register()
-        {
-            return View();
-        }
-
-        public IActionResult Homework()
-        {
-            return View();
-        }
-
         public IActionResult Address()
         {
             return View();
@@ -61,12 +51,11 @@ namespace Msit14306Site.Controllers
         {
             return View();
         }
+
         public IActionResult History()
         {
             return View();
         }
-
-
 
         public IActionResult Privacy()
         {
@@ -78,7 +67,5 @@ namespace Msit14306Site.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-
-
     }
 }
