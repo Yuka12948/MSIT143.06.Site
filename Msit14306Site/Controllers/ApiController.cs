@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Msit14306Site.Controllers
@@ -84,6 +85,19 @@ namespace Msit14306Site.Controllers
         {
             bool exists = _context.Members.Any(m => m.Name == Name);
             return Content(exists.ToString(), "text/plain");
+        }
+
+        public IActionResult checkEmail(string Email)
+        {
+            bool check = Regex.IsMatch(Email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            //bool exists = _context.Members.Any(m => m.Email == Email);
+            return Content(check.ToString(), "text/plain");
+        }
+
+        public IActionResult checkAge(int Age)
+        {
+            bool check = 18 <= Age && Age < 100;
+            return Content(check.ToString(), "text/plain");
         }
 
         //讀取所有城市的資料
