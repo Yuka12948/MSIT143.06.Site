@@ -85,16 +85,17 @@ namespace Msit14306Site.Controllers
             //return Content(member.Name, "text/plain");
         }
 
-        //public IActionResult checkedData(string Name)
-        //{
-        //    bool isExist = _context.Members.Any(m => m.Name == Name);
-        //    if (string.IsNullOrEmpty(Name))
-        //        return Content("姓名欄位不可為空值", "text/plain");
-        //    else if (isExist)
-        //        return Content("此帳號已存在", "text/plain");
-        //    else
-        //        return Content("" ,"text/plain");
-        //}
+        public IActionResult checkAccount(string Name)
+        {
+            bool exists = _context.Members.Any(m => m.Name == Name);
+            //if (string.IsNullOrEmpty(Name))
+            //    return Content("姓名欄位不可為空值", "text/plain");
+            //else if (exists)
+            //    return Content("此帳號已存在", "text/plain");
+            //else
+            //    return Content("", "text/plain");
+            return Content(exists.ToString(), "text/plain");
+        }
 
         //讀取所有城市的資料
         public IActionResult City()

@@ -61,6 +61,12 @@ namespace Msit14306Site.Controllers
         {
             return View();
         }
+        public IActionResult History()
+        {
+            return View();
+        }
+
+
 
         public IActionResult Privacy()
         {
