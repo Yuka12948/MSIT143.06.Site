@@ -15,14 +15,24 @@
 </div>
 @section Scripts{
     <script>
+
         $('#buttonGet').click(function () {
-            $('#divAlert').text("GET")
+            $.get('@Url.Content("~/api/index")', { "keyword":"Yuka"}, function (data) {
+                $('#divAlert').text(data)
+            })
         })
+
         $('#buttonPost').click(function () {
-            $('#divAlert').text("POST")
+            $.post('@Url.Content("~/api/index")', { "keyword":"Duck"}, function (data) {
+                $('#divAlert').text(data)
+            })
         })
+
         $('#buttonJson').click(function () {
-            $('#divAlert').text("JSON")
+            $.getJSON('@Url.Content("~/api/index")', { "keyword": "臺北市" }, function (data) {
+                console.log($.each(index,data))
+                //$('#divAlert').text(data)
+            })
         })
         $('#buttonLoad').click(function () {
             $('#divAlert').text("LOAD")

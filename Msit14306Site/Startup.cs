@@ -29,6 +29,11 @@ namespace Msit14306Site
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DemoConnection"));
             });
+            services.AddDbContext<MDAContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("MDAConnection"));
+            });
+
             services.AddControllersWithViews();
         }
 

@@ -73,7 +73,7 @@
             else if (data == 'True')
                 NameHelp.textContent = "此帳號已存在"
             else
-                NameHelp.textContent =""
+                NameHelp.textContent ="此帳號可以使用"
         })
 
         txtEmail.addEventListener("blur", async () => {
@@ -91,15 +91,15 @@
         })
 
         txtAge.addEventListener("blur", async () => {
-            @*let response = await fetch("@Url.Content("~/Api/checkAge")" + `?email=${txtAge.value}`)
+            let response = await fetch("@Url.Content("~/Api/checkAge")" + `?Age=${txtAge.value}`)
             let data = await response.text()
-            console.log(data)*@
+            console.log(data)
             if (txtAge.value == '')
                 AgeHelp.textContent = "此欄位不可為空值"
-            //else if (data == 'True')
-            //    AgeHelp.textContent = "年齡正確"
-            //else if (data == 'False')
-            //    AgeHelp.textContent = "年齡不符"
+            else if (data == 'True')
+                AgeHelp.textContent = "年齡正確"
+            else if (data == 'False')
+                AgeHelp.textContent = "年齡不符"
             else
                 AgeHelp.textContent = ""
         })
@@ -108,7 +108,8 @@
         btn.addEventListener("click", event => {
             event.preventDefault() //將submit預設行為停止 (按下submit按鈕不會送出)
 
-            if (NameHelp.textContent == "" && EmailHelp.textContent == "" && AgeHelp.textContent == "") {
+            if (NameHelp.textContent == "此帳號可以使用" && EmailHelp.textContent == "格式正確" && AgeHelp.textContent == "年齡正確")
+            {
                 const formData = new FormData(document.userInfo); //將userInfo表單中的資料放到formData變數中
 
                 //Fetch方法將資料送到Server端

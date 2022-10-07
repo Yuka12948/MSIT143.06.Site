@@ -15,11 +15,13 @@ namespace Msit14306Site.Controllers
     {
         private readonly IWebHostEnvironment _host;
         private readonly DemoContext _context; //宣告廣域變數
+        private readonly MDAContext _dbMDA;
 
-        public ApiController(IWebHostEnvironment host, DemoContext context) //相依性注入
+        public ApiController(IWebHostEnvironment host, DemoContext context, MDAContext dbMDA) //相依性注入
         {
             _host = host;
             _context = context;
+            _dbMDA = dbMDA;
         }
 
         //http://localhost.../api/index
@@ -120,5 +122,12 @@ namespace Msit14306Site.Controllers
             var roads = _context.Addresses.Where(a => a.SiteId == site).Select(a => a.Road).Distinct();
             return Json(roads);
         }
+
+        public IActionResult movie(string keyword)
+        {
+            var movies = _dbMDA.電影movies.Where(m => m.中文標題titleCht.Contains(keyword)).Select(m => m.中文標題titleCht);
+            return Json(movies);
+        }
+
     }
 }

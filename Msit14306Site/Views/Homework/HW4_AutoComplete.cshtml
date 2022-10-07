@@ -41,16 +41,27 @@
         const inputText = document.querySelector("#autoComplete")
         const listData = document.querySelector(".list-group")
         listData.style.display = "none"
-        inputText.addEventListener("input", () => {
+
+        inputText.addEventListener("input",async () => {
             const keyword = inputText.value
             listData.style.display = "block"
+
             //找到字就回傳字的索引值，找不到就回傳-1
             //results = []
-            let results = DATAS.filter(data => data.Name.indexOf(keyword) !== -1)
+            //let results = DATAS.filter(data => data.Name.indexOf(keyword) !== -1)
+            //let htmlDatas = results.map(data => {
+            //    return (
+            //        `<button type="button" onclick="read(event)" class="list-group-item list-group-item-action">${data}</button>`
+            //    )
+            //})
+
+            //Ajax
+            let response = await fetch("@Url.Content("~/Api/movie")" + `?keyword=${keyword}`)
+            let results = await response.json() //
             let htmlDatas = results.map(data => {
                 return (
-                    `<button type="button" onclick="read(event)" class="list-group-item list-group-item-action">${data.Name}</button>`
-                )
+                    `<button type="button" onclick="read(event)" class="list-group-item list-group-item-action">${data}</button>`
+                    )
             })
             listData.innerHTML = htmlDatas.join("")
         })

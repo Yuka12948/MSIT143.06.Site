@@ -56,6 +56,10 @@ namespace Msit14306Site.Controllers
         {
             return View();
         }
+        public IActionResult jQuery()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
