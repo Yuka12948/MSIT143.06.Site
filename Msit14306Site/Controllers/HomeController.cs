@@ -61,6 +61,12 @@ namespace Msit14306Site.Controllers
             return View();
         }
 
+        public IActionResult Partial()
+        {
+            return PartialView();
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
